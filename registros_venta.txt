@@ -1,0 +1,30 @@
+El nombre del cliente es
+jesusVisa
+La cantidad de productos es
+6
+El metodo de pago es
+Visa
+El total a pagar es
+80100.0
+El subtotal de la categoria panes es
+9000.0
+El subtotal de la categoria tortas es
+55000.0
+El subtotal de la categoria postre es
+25000.0
+==============
+El nombre del cliente es
+jesusOtro
+La cantidad de productos es
+6
+El metodo de pago es
+Otro
+El total a pagar es
+89000.0
+El subtotal de la categoria panes es
+9000.0
+El subtotal de la categoria tortas es
+55000.0
+El subtotal de la categoria postre es
+25000.0
+==============

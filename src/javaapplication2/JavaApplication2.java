@@ -27,7 +27,8 @@ public class JavaApplication2 {
             String[] products = {"Pan arabe","Torta de zanahoria","Napoleon","Tres leches","Torta chocolate","Pan de espinaca"};
             int[] prices = {5000,25000,10000,15000,30000,4000};
             String[] type = {"Panes","Tortas","Postres","Postres","Tortas","Panes"};
-
+            
+            input.nextLine();
             System.out.println("Ingrese el nombre de la panaderia");
             String bakery_name = input.nextLine();
 
@@ -43,16 +44,18 @@ public class JavaApplication2 {
             double cake_subtotal[] = new double [number_of_clients];
             double desserts_subtotal[] = new double [number_of_clients];
 
-            //Total a pagar de cada clientey metodo de pago
+            //Total a pagar de cada cliente, metodo de pago y descuento aplicado
             double total[] = new double[number_of_clients];
             String payment_methods[] = new String[number_of_clients];
-
+            String discounts[] = new String[number_of_clients];
+            
             //Ciclo que recibe la informacion de los clientes
             for (int i = 0 ; i < number_of_clients ; i++){
 
                 //Registramos el nombre del cliente directamente a el vector
                 System.out.println("Ingrese su nombre");
-                String name = input.next();
+                input.nextLine();
+                String name = input.nextLine();
                 clients_name[i] = name;
                 //Variables que contienen toda la informacion de el usuario actual
                 int product_quantity = 0;
@@ -90,11 +93,13 @@ public class JavaApplication2 {
 
                 int payment_ = input.nextInt();
                 String payment_method = "Otro";
-
+                String discount = "0%";
+                        
                 //Si el metodo de pago es visa entonces se aplica el descuento
                 if(payment_ == 1){
                     ammount_to_pay = ammount_to_pay - (ammount_to_pay * 0.1);
                     payment_method = "Visa";
+                    discount = "10%";
                 }
 
                 //Despues de recoger la informacion la guardamos en los vectores
@@ -105,55 +110,39 @@ public class JavaApplication2 {
                 bread_subtotal[i] =bread_category_subtotal;
                 cake_subtotal[i] = cake_category_subtotal;
                 desserts_subtotal[i] = dessert_category_subtotal;
-
+                discounts[i] = discount;
+                
+                //Abrimos el archivo de texto para guardar los datos
+                PrintWriter file = new PrintWriter(new FileWriter("registros_venta.txt",true));
+                file.println("Nombre del cliente: " + clients_name[i]);
+                file.println("Cantidad de productos: " + ammount_of_products[i]);
+                file.println("Metodo de pago: " + payment_methods[i]);
+                file.println("Total a pagar es: " + total[i]);
+                file.println("Descuento: " + discounts[i]);
+                file.println("Subtotal de la categoria panes: " + bread_subtotal[i]);
+                file.println("Subtotal de la categoria tortas es: " + cake_subtotal[i]);
+                file.println("Subtotal de la categoria postre: " + desserts_subtotal[i]);
+                file.println("==============");
+                
+                //Despues de guardar los datos cerramos el archivo
+                file.close();
+                System.out.println("Informacion guardada correctamente");
             }
-            //Abrimos el archivo de texto para guardar los resultados
-            PrintWriter file = new PrintWriter(new FileWriter("registros_venta.txt",true));
+            
 
             //Ciclo que va a mostrar los resultados
             for(int i = 0 ; i < number_of_clients ; i++){
-                System.out.println("El nombre del cliente es");
-                System.out.println(clients_name[i]);
-                file.println("El nombre del cliente es");
-                file.println(clients_name[i]);
-
-                System.out.println("La cantidad de productos es");
-                System.out.println(ammount_of_products[i]);
-                file.println("La cantidad de productos es");
-                file.println(ammount_of_products[i]);
-
-                System.out.println("El metodo de pago es");
-                System.out.println(payment_methods[i]);
-                file.println("El metodo de pago es");
-                file.println(payment_methods[i]);
-
-                System.out.println("El total a pagar es");
-                System.out.println(total[i]);
-                file.println("El total a pagar es");
-                file.println(total[i]);
-
-                System.out.println("El subtotal de la categoria panes es");
-                System.out.println(bread_subtotal[i]);
-                file.println("El subtotal de la categoria panes es");
-                file.println(bread_subtotal[i]);
-
-                System.out.println("El subtotal de la categoria tortas es");
-                System.out.println(cake_subtotal[i]);
-                file.println("El subtotal de la categoria tortas es");
-                file.println(cake_subtotal[i]);
-
-                System.out.println("El subtotal de la categoria postre es");
-                System.out.println(desserts_subtotal[i]);
-                file.println("El subtotal de la categoria postre es");
-                file.println(desserts_subtotal[i]);
-
+                System.out.println("Nombre del cliente: " + clients_name[i]);
+                System.out.println("Cantidad de productos: " + ammount_of_products[i]);
+                System.out.println("Metodo de pago: " + payment_methods[i]);           
+                System.out.println("Total a pagar es: " + total[i]);
+                System.out.println("Descuento: " + discounts[i]);
+                System.out.println("Subtotal de la categoria panes: " + bread_subtotal[i]);
+                System.out.println("Subtotal de la categoria tortas: " + cake_subtotal[i]);
+                System.out.println("Subtotal de la categoria postre: " + desserts_subtotal[i]);
                 System.out.println("==============");
-                file.println("==============");
-
             }
 
-            //Despues de guardar los resultados cerramos el archivo
-            file.close();
         }    
     }   
 }

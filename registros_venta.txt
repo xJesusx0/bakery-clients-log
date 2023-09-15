@@ -34,12 +34,3 @@ Subtotal de la categoria panes: 4000.0
 Subtotal de la categoria tortas es: 60000.0
 Subtotal de la categoria postre: 0.0
 ==============
-Nombre del cliente: adasd
-Cantidad de productos: 9
-Metodo de pago: Otro
-Total a pagar es: 159000.0
-Descuento: 0%
-Subtotal de la categoria panes: 14000.0
-Subtotal de la categoria tortas es: 135000.0
-Subtotal de la categoria postre: 10000.0
-==============

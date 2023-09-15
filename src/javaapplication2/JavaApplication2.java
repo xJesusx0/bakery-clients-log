@@ -5,7 +5,7 @@ import java.io.*;
 
 public class JavaApplication2 {
     public static void main(String[] args) throws IOException {
-         
+                         
         Scanner input = new Scanner(System.in);
         System.out.println("Ingrese que desea hacer");
         System.out.println("1 - Ver el registro");
@@ -23,6 +23,7 @@ public class JavaApplication2 {
             }
             file.close(); 
         }else if (option == 2){
+            PrintWriter file = new PrintWriter(new FileWriter("registros_venta.txt",true));
             //En estos vectores declaramos la informacion de cada producto
             String[] products = {"Pan arabe","Torta de zanahoria","Napoleon","Tres leches","Torta chocolate","Pan de espinaca"};
             int[] prices = {5000,25000,10000,15000,30000,4000};
@@ -113,7 +114,6 @@ public class JavaApplication2 {
                 discounts[i] = discount;
                 
                 //Abrimos el archivo de texto para guardar los datos
-                PrintWriter file = new PrintWriter(new FileWriter("registros_venta.txt",true));
                 file.println("Nombre del cliente: " + clients_name[i]);
                 file.println("Cantidad de productos: " + ammount_of_products[i]);
                 file.println("Metodo de pago: " + payment_methods[i]);
@@ -125,7 +125,7 @@ public class JavaApplication2 {
                 file.println("==============");
                 
                 //Despues de guardar los datos cerramos el archivo
-                file.close();
+                
                 System.out.println("Informacion guardada correctamente");
             }
             
@@ -142,7 +142,7 @@ public class JavaApplication2 {
                 System.out.println("Subtotal de la categoria postre: " + desserts_subtotal[i]);
                 System.out.println("==============");
             }
-
+            file.close();
         }    
     }   
 }
